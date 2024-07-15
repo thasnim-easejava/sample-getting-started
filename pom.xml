@@ -34,6 +34,12 @@
       <type>pom</type>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.ibm.websphere.appserver.api</groupId>
+      <artifactId>com.ibm.websphere.appserver.api.passwordUtil</artifactId>
+      <version>1.0.58</version>
+      <scope>provided</scope>
+    </dependency>
     <!-- Dependencies for tests -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
