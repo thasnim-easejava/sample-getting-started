@@ -24,10 +24,6 @@
     <liberty.var.app.context.root>/</liberty.var.app.context.root>
   </properties>
 
-  <install>
-      <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2022-10-19_0300/openliberty-all-22.0.0.12-cl221220221019-0300.zip</runtimeUrl>
-  </install>
-
   <dependencies>
     <!-- Dependencies -->
     <dependency>
