@@ -10,7 +10,7 @@ public class StartupDelay {
     public void delay() {
         try {
             System.out.println("== STARTUP DELAY: Sleeping for 30 seconds ==");
-            Thread.sleep(30000);  // 30 sec delay
+            Thread.sleep(60000);  // 30 sec delay
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
