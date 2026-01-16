@@ -20,6 +20,16 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @ApplicationScoped
 public class SystemConfig {
 
+  @PostConstruct
+    public void delay() {
+        try {
+            System.out.println("== STARTUP DELAY: Sleeping for 30 seconds ==");
+            Thread.sleep(60000);  // 30 sec delay
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
   @Inject
   @ConfigProperty(name = "io_openliberty_sample_system_inMaintenance")
   Provider<Boolean> inMaintenance;
