@@ -1,6 +1,7 @@
 <server description="Sample Open Liberty server">
 
   <featureManager>
+    <feature>doesNotExist-1.0</feature>
     <feature>restfulWS-3.1</feature>
     <feature>jsonb-3.0</feature>
     <feature>mpMetrics-5.1</feature>
