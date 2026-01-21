@@ -22,19 +22,12 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @ApplicationScoped
 public class SystemConfig {
 
-  private volatile boolean initialized = false;
+  private volatile boolean initialized = true;
 
     @PostConstruct
     void init() {
-        new Thread(() -> {
-            try {
-                // Simulate slow startup (e.g. DB warmup)
-                Thread.sleep(60_000); // 60 seconds
-                initialized = true;
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }).start();
+        // Initialization complete immediately
+        initialized = true;
     }
 
     public boolean isInitialized() {

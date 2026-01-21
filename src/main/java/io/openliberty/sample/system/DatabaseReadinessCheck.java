@@ -26,12 +26,12 @@ public class DatabaseReadinessCheck implements HealthCheck {
 	
 	/**
 	 * Simulates checking database connectivity.
-	 * Currently hardcoded to return false to simulate database unreachable.
-	 * 
-	 * @return false to simulate database unreachable scenario
+	 * Returns true to indicate database is reachable.
+	 *
+	 * @return true to indicate database is reachable
 	 */
 	private boolean isDatabaseReachable() {
-		// Simulate database unreachable scenario
+		// Simulate database reachable scenario
 		// In a real scenario, this would attempt to connect to a database
 		// For example:
 		// try {
@@ -41,7 +41,7 @@ public class DatabaseReadinessCheck implements HealthCheck {
 		// } catch (SQLException e) {
 		//     return false;
 		// }
-		return false;
+		return true;
 	}
 	
 	@Override
