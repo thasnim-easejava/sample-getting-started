@@ -9,44 +9,44 @@
  *     IBM Corporation - Initial implementation
  *******************************************************************************/
 
-package io.openliberty.sample.system;
+// package io.openliberty.sample.system;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.inject.Provider;
-import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.ApplicationScoped;
+// import jakarta.enterprise.context.ApplicationScoped;
+// import jakarta.inject.Inject;
+// import jakarta.inject.Provider;
+// import jakarta.annotation.PostConstruct;
+// import jakarta.enterprise.context.ApplicationScoped;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+// import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-@ApplicationScoped
-public class SystemConfig {
+// @ApplicationScoped
+// public class SystemConfig {
 
-  private volatile boolean initialized = false;
+//   private volatile boolean initialized = false;
 
-    @PostConstruct
-    void init() {
-        new Thread(() -> {
-            try {
-                // Simulate slow startup (e.g. DB warmup)
-                Thread.sleep(60_000); // 60 seconds
-                initialized = true;
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }).start();
-    }
+//     @PostConstruct
+//     void init() {
+//         new Thread(() -> {
+//             try {
+//                 // Simulate slow startup (e.g. DB warmup)
+//                 Thread.sleep(60_000); // 60 seconds
+//                 initialized = true;
+//             } catch (InterruptedException e) {
+//                 Thread.currentThread().interrupt();
+//             }
+//         }).start();
+//     }
 
-    public boolean isInitialized() {
-        return initialized;
-    }
+//     public boolean isInitialized() {
+//         return initialized;
+//     }
 
-  @Inject
-  @ConfigProperty(name = "io_openliberty_sample_system_inMaintenance")
-  Provider<Boolean> inMaintenance;
+//   @Inject
+//   @ConfigProperty(name = "io_openliberty_sample_system_inMaintenance")
+//   Provider<Boolean> inMaintenance;
 
 
-  public boolean isInMaintenance() {
-    return inMaintenance.get();
-  }
-}
+//   public boolean isInMaintenance() {
+//     return inMaintenance.get();
+//   }
+// }
