@@ -22,16 +22,45 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @ApplicationScoped
 public class SystemConfig {
 
-  private volatile boolean initialized = true;
+  private volatile boolean initialized = false;
+  private volatile boolean databaseReachable = false;
 
     @PostConstruct
     void init() {
-        // Initialization complete immediately
-        initialized = true;
+        // Simulate database connection check during initialization
+        System.out.println("SystemConfig: Starting initialization...");
+        databaseReachable = checkDatabaseConnection();
+        
+        if (databaseReachable) {
+            initialized = true;
+            System.out.println("SystemConfig: Initialization complete - database reachable");
+        } else {
+            initialized = false;
+            System.err.println("SystemConfig: Initialization failed - database not reachable");
+        }
+    }
+    
+    private boolean checkDatabaseConnection() {
+        try {
+            // Simulate database connection attempt with timeout
+            System.out.println("SystemConfig: Checking database connection...");
+            Thread.sleep(10000);  // 10 second delay
+            System.out.println("SystemConfig: Database connection check completed");
+            // Return false to simulate database unreachable
+            return false;
+        } catch (InterruptedException e) {
+            System.err.println("SystemConfig: Database check interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
+            return false;
+        }
     }
 
     public boolean isInitialized() {
-        return initialized;
+        return initialized && databaseReachable;
+    }
+    
+    public boolean isDatabaseReachable() {
+        return databaseReachable;
     }
 
   @Inject

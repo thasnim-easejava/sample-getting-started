@@ -31,9 +31,22 @@ public class DatabaseReadinessCheck implements HealthCheck {
 	 * @return true to indicate database is reachable
 	 */
 	private boolean isDatabaseReachable() {
-		// Simulate database reachable scenario
-		// In a real scenario, this would attempt to connect to a database
-		// For example:
+		// Simulate database connection timeout scenario
+		// This simulates a real database connection attempt that times out
+		try {
+			// Simulate database connection delay (30 seconds per attempt)
+			// This will cause the startup probe to fail after multiple attempts
+			System.out.println("Attempting to connect to database...");
+			Thread.sleep(30000);  // 30 second delay
+			System.out.println("Database connection attempt timed out");
+		} catch (InterruptedException e) {
+			System.err.println("Database connection interrupted: " + e.getMessage());
+			Thread.currentThread().interrupt();
+			return false;
+		}
+		
+		// After the delay, return false to simulate connection failure
+		// In a real scenario, this would be:
 		// try {
 		//     Connection conn = dataSource.getConnection();
 		//     conn.close();
@@ -41,7 +54,7 @@ public class DatabaseReadinessCheck implements HealthCheck {
 		// } catch (SQLException e) {
 		//     return false;
 		// }
-		return true;
+		return false;  // Simulate database unreachable
 	}
 	
 	@Override
