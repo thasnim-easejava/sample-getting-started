@@ -26,7 +26,21 @@ public class SystemConfig {
 
     @PostConstruct
     void init() {
-        // Initialization complete immediately
+        // COMMENTED OUT: 60-second sleep that causes startup timeout
+        // This code simulates slow startup (e.g. DB warmup) but causes deployment failures
+        /*
+        new Thread(() -> {
+            try {
+                // Simulate slow startup (e.g. DB warmup)
+                Thread.sleep(60_000); // 60 seconds
+                initialized = true;
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+        */
+        
+        // Initialization complete immediately to prevent startup timeout
         initialized = true;
     }
 
