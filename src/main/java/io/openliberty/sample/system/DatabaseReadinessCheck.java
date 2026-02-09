@@ -26,27 +26,14 @@ public class DatabaseReadinessCheck implements HealthCheck {
 	
 	/**
 	 * Simulates checking database connectivity.
-	 * MODIFIED: Changed to return true to prevent startup timeout.
-	 * Original behavior (return false) caused application to never report as ready.
+	 * Returns false to simulate database unreachable scenario.
 	 *
-	 * @return true to indicate database is reachable
+	 * @return false to indicate database is unreachable
 	 */
 	private boolean isDatabaseReachable() {
-		// COMMENTED OUT: Original code that simulated database unreachable scenario
-		// This caused the application to never report as ready, leading to startup timeout
-		// return false;
-		
-		// Modified to return true to allow application to start successfully
-		// In a real scenario, this would attempt to connect to a database
-		// For example:
-		// try {
-		//     Connection conn = dataSource.getConnection();
-		//     conn.close();
-		//     return true;
-		// } catch (SQLException e) {
-		//     return false;
-		// }
-		return true;
+		// Simulate database unreachable scenario
+		// This causes the application to never report as ready, leading to startup timeout
+		return false;
 	}
 	
 	@Override
